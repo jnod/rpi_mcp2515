@@ -89,7 +89,7 @@ void rpiCAN_init(uint8_t bcm2835_interruptPin) {
 
     sem_init(&rxBuffer.dataSem, 0, 0);
     sem_init(&txBuffer.dataSem, 0, 0);
-    sem_init(&spiAccessSem, 0, 0);
+    sem_init(&spiAccessSem, 0, 1);
 
     pthread_create(&readThread, NULL, &reader, NULL);
     pthread_create(&writeThread, NULL, &writer, NULL);

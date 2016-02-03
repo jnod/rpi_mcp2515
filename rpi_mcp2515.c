@@ -18,11 +18,11 @@ static pthread_t readThread;
 static uint8_t run = 1;
 
 int main() {
-  pthread_create(&readThread, NULL, messageReader, NULL);
-
   rpiCAN_init(RPICAN_GPIO_25);
   rpiCAN_setBaud(RPICAN_BAUD_125MHZ);
   rpiCAN_start();
+
+  pthread_create(&readThread, NULL, &messageReader, NULL);
 
   while(run) {
     fgets(str, STR_SIZE, stdin);
