@@ -76,12 +76,12 @@ static int commandMessageFromStr() {
 }
 
 static void printJsonCanMessage(CanMessage* message) {
-  printf("{\"mtype\":%u,\"sid\":%u,\"eid\":%u,\"length\":%u,\"data\":[",
+  printf("{\"mtype\":0x%01x,\"sid\":0x%02x,\"eid\":0x%04x,\"length\":0x%01x,\"data\":[",
           message->mtype, message->sid, message->eid, message->length);
 
   uint8_t i = 0;
   while (i < message->length) {
-    printf("%u", message->data[i]);
+    printf("0x%01x", message->data[i]);
     i++;
 
     if (i < message->length) {
