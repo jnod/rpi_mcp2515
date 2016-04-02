@@ -18,7 +18,7 @@ static pthread_t readThread;
 static uint8_t run = 1;
 
 int main() {
-  rpiCAN_init(RPICAN_GPIO_25);
+  rpiCAN_init(RPICAN_GPIO_5);
   rpiCAN_setBaud(RPICAN_BAUD_125MHZ);
   rpiCAN_start();
 
