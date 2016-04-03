@@ -27,7 +27,6 @@ int main() {
   while(run) {
     fgets(str, STR_SIZE, stdin);
     if (commandMessageFromStr() == 0) {
-      printJsonCanMessage(&commandMessage);
       rpiCAN_write(&commandMessage);
     }
   }
@@ -90,6 +89,7 @@ static void printJsonCanMessage(CanMessage* message) {
   }
 
   printf("]}\n");
+  fflush(stdout);
 }
 
 static void* messageReader(void* arg) {
