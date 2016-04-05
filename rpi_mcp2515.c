@@ -18,8 +18,9 @@ static pthread_t readThread;
 static uint8_t run = 1;
 
 int main() {
-  rpiCAN_init(RPICAN_GPIO_25);
+  rpiCAN_init(RPICAN_GPIO_5);
   rpiCAN_setBaud(RPICAN_BAUD_50KBIT);
+
   rpiCAN_start();
 
   pthread_create(&readThread, NULL, &messageReader, NULL);
@@ -27,7 +28,6 @@ int main() {
   while(run) {
     fgets(str, STR_SIZE, stdin);
     if (commandMessageFromStr() == 0) {
-      printJsonCanMessage(&commandMessage);
       rpiCAN_write(&commandMessage);
     }
   }
@@ -76,12 +76,12 @@ static int commandMessageFromStr() {
 }
 
 static void printJsonCanMessage(CanMessage* message) {
-  printf("{\"mtype\":%u,\"sid\":%u,\"eid\":%u,\"length\":%u,\"data\":[",
+  printf("{\"mtype\":0x%02X,\"sid\":0x%04X,\"eid\":0x%08X,\"length\":0x%02X,\"data\":[",
           message->mtype, message->sid, message->eid, message->length);
 
   uint8_t i = 0;
   while (i < message->length) {
-    printf("%u", message->data[i]);
+    printf("0x%02X", message->data[i]);
     i++;
 
     if (i < message->length) {
@@ -90,6 +90,7 @@ static void printJsonCanMessage(CanMessage* message) {
   }
 
   printf("]}\n");
+  fflush(stdout);
 }
 
 static void* messageReader(void* arg) {
