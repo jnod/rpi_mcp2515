@@ -21,10 +21,11 @@
 #include <stdint.h>
 #include "mcp2515.h"
 
-#define RPICAN_BAUD_125MHZ   125
-#define RPICAN_BAUD_250MHZ   250
-#define RPICAN_BAUD_500MHZ   500
-#define RPICAN_BAUD_1000MHZ  1000
+#define RPICAN_BAUD_50KBIT    50
+#define RPICAN_BAUD_125KBIT   125
+#define RPICAN_BAUD_250KBIT   250
+#define RPICAN_BAUD_500KBIT   500
+#define RPICAN_BAUD_1000KBIT  1000
 
 // GPIO pin mappings to the bcm2835 for rpi b+ and rpi 2 40 pin headers
 #define RPICAN_GPIO_2        RPI_BPLUS_GPIO_J8_03

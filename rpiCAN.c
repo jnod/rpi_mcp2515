@@ -106,16 +106,19 @@ void rpiCAN_read(CanMessage* canMessage) {
 
 void rpiCAN_setBaud(uint16_t baudRate) {
   switch (baudRate) {
-    case RPICAN_BAUD_125MHZ:
+    case RPICAN_BAUD_50KBIT:
+      mcp2515_configCNFn(CNF1_10MHZ_50KBIT, CNF2_10MHZ_50KBIT, CNF3_10MHZ_50KBIT);
+      break;
+    case RPICAN_BAUD_125KBIT:
       mcp2515_configCNFn(CNF1_10MHZ_125KBIT, CNF2_10MHZ_125KBIT, CNF3_10MHZ_125KBIT);
       break;
-    case RPICAN_BAUD_250MHZ:
+    case RPICAN_BAUD_250KBIT:
       mcp2515_configCNFn(CNF1_10MHZ_250KBIT, CNF2_10MHZ_250KBIT, CNF3_10MHZ_250KBIT);
       break;
-    case RPICAN_BAUD_500MHZ:
+    case RPICAN_BAUD_500KBIT:
       mcp2515_configCNFn(CNF1_10MHZ_500KBIT, CNF2_10MHZ_500KBIT, CNF3_10MHZ_500KBIT);
       break;
-    case RPICAN_BAUD_1000MHZ:
+    case RPICAN_BAUD_1000KBIT:
       mcp2515_configCNFn(CNF1_10MHZ_1000KBIT, CNF2_10MHZ_1000KBIT, CNF3_10MHZ_1000KBIT);
       break;
   }
