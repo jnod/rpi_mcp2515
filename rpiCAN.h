@@ -19,7 +19,7 @@
 
 #include <bcm2835.h>
 #include <stdint.h>
-#include "mcp2515.h"
+#include <mcp2515.h>
 
 #define RPICAN_BAUD_50KBIT    50
 #define RPICAN_BAUD_125KBIT   125

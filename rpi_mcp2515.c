@@ -1,5 +1,3 @@
-//#include "bcm2835.h"
-#include "mcp2515.h"
 #include <pthread.h>
 #include "rpiCAN.h"
 #include <semaphore.h>
